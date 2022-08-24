@@ -15,8 +15,8 @@ import java.util.Objects;
 @Table(name = "task", schema = "todolist", catalog = "todolist")
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Task {

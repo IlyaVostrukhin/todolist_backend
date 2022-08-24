@@ -7,9 +7,7 @@ import lombok.Setter;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Table(name = "user_data", schema = "todolist", catalog = "todolist")
@@ -47,8 +45,8 @@ public class User {
 //    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, optional = false)
 //    private Stat stat;
 
-    @ManyToMany(mappedBy = "users", fetch = FetchType.EAGER)
-    private Set<Role> roles = new HashSet<>();
+//    @ManyToMany(mappedBy = "users", fetch = FetchType.EAGER)
+//    private Set<Role> roles = new HashSet<>();
 
     @Override
     public boolean equals(Object o) {

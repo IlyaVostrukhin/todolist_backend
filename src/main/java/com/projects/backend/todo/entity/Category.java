@@ -1,8 +1,6 @@
 package com.projects.backend.todo.entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
@@ -12,6 +10,7 @@ import java.util.Objects;
 @Table(name = "category", schema = "todolist", catalog = "todolist")
 @Getter
 @Setter
+@AllArgsConstructor
 @NoArgsConstructor
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
@@ -29,7 +28,7 @@ public class Category {
     @Column(name = "uncompleted_count", updatable = false)
     private Long uncompletedCount;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 

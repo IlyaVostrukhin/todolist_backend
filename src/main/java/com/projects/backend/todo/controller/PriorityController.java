@@ -1,8 +1,8 @@
 package com.projects.backend.todo.controller;
 
-import com.projects.backend.todo.entity.Category;
-import com.projects.backend.todo.dto.CategorySearchDto;
-import com.projects.backend.todo.service.CategoryService;
+import com.projects.backend.todo.dto.PrioritySearchDto;
+import com.projects.backend.todo.entity.Priority;
+import com.projects.backend.todo.service.PriorityService;
 import com.projects.backend.todo.util.Checker;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -15,37 +15,37 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping("/category")
+@RequestMapping("/priority")
 @RequiredArgsConstructor
 @Log4j2
-public class CategoryController {
+public class PriorityController {
 
-    private final CategoryService categoryService;
+    private final PriorityService priorityService;
 
     @PostMapping("/add")
-    public ResponseEntity<Category> add(@RequestBody Category category) {
+    public ResponseEntity<Priority> add(@RequestBody Priority priority) {
 
         try {
-            Checker.idNotNullAndNotZero(category.getId());
-            Checker.titleNotNullAndNotEmpty(category.getTitle());
+            Checker.idNotNullAndNotZero(priority.getId());
+            Checker.titleNotNullAndNotEmpty(priority.getTitle());
         } catch (IllegalArgumentException e) {
             return new ResponseEntity(e.getMessage(), HttpStatus.NOT_ACCEPTABLE);
         }
 
-        return ResponseEntity.ok(categoryService.add(category));
+        return ResponseEntity.ok(priorityService.add(priority));
     }
 
     @PutMapping("/update")
-    public ResponseEntity update(@RequestBody Category category) {
+    public ResponseEntity update(@RequestBody Priority priority) {
 
         try {
-            Checker.idIsNullOrZero(category.getId());
-            Checker.titleNotNullAndNotEmpty(category.getTitle());
+            Checker.idIsNullOrZero(priority.getId());
+            Checker.titleNotNullAndNotEmpty(priority.getTitle());
         } catch (IllegalArgumentException e) {
             return new ResponseEntity(e.getMessage(), HttpStatus.NOT_ACCEPTABLE);
         }
 
-        categoryService.update(category);
+        priorityService.update(priority);
 
         return new ResponseEntity(HttpStatus.OK);
     }
@@ -55,11 +55,11 @@ public class CategoryController {
 
         try {
             Checker.idIsNullOrZero(id);
-            categoryService.delete(id);
+            priorityService.delete(id);
         } catch (IllegalArgumentException argEx) {
             return new ResponseEntity(argEx.getMessage(), HttpStatus.NOT_ACCEPTABLE);
         } catch (EmptyResultDataAccessException e) {
-            String message = "Category with id = " + id + " not found";
+            String message = "Priority with id = " + id + " not found";
             log.error(message);
             return new ResponseEntity(message, HttpStatus.NOT_ACCEPTABLE);
         }
@@ -68,33 +68,33 @@ public class CategoryController {
     }
 
     @PostMapping("/search")
-    public ResponseEntity<List<Category>> search(@RequestBody CategorySearchDto categorySearchDto) {
+    public ResponseEntity<List<Priority>> search(@RequestBody PrioritySearchDto prioritySearchDto) {
 
         try {
-            Checker.emailNotNullAndNotEmpty(categorySearchDto.getEmail());
+            Checker.emailNotNullAndNotEmpty(prioritySearchDto.getEmail());
         } catch (IllegalArgumentException e) {
             return new ResponseEntity(e.getMessage(), HttpStatus.NOT_ACCEPTABLE);
         }
 
-        List<Category> categories = categoryService.findByTitle(categorySearchDto.getTitle(), categorySearchDto.getEmail());
+        List<Priority> categories = priorityService.findByTitle(prioritySearchDto.getTitle(), prioritySearchDto.getEmail());
 
         return ResponseEntity.ok(categories);
     }
 
     @PostMapping("/id")
-    public ResponseEntity<Category> findById(@RequestBody Long id) {
+    public ResponseEntity<Priority> findById(@RequestBody Long id) {
 
         try {
             Checker.idIsNullOrZero(id);
-            return ResponseEntity.ok(categoryService.findById(id));
+            return ResponseEntity.ok(priorityService.findById(id));
         } catch (IllegalArgumentException e) {
             return new ResponseEntity(e.getMessage(), HttpStatus.NOT_ACCEPTABLE);
         } catch (NoSuchElementException e) {
-            String message = "Category with id = " + id + " not found";
+            String message = "Priority with id = " + id + " not found";
             log.error(message);
             return new ResponseEntity(message, HttpStatus.NOT_ACCEPTABLE);
         }
 
     }
-
+    
 }

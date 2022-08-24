@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"\",\r\n    \"email\": \"\"\r\n}",
+							"raw": "{\r\n    \"title\": \"\",\r\n    \"email\": \"email1@gmail.com\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -37,7 +37,7 @@
 					"response": []
 				},
 				{
-					"name": "GetCategoriesById",
+					"name": "GetCategoryById",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -97,7 +97,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": \"60168\",\r\n    \"title\": \"\",\r\n    \"user\": \r\n    {\r\n        \"id\": 10025\r\n    }\r\n}",
+							"raw": "{\r\n    \"id\": 60168,\r\n    \"title\": \"qwe\",\r\n    \"user\": \r\n    {\r\n        \"id\": 10025\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -123,14 +123,146 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{HOST}}/category/delete/60168",
+							"raw": "{{HOST}}/category/delete/120169",
 							"host": [
 								"{{HOST}}"
 							],
 							"path": [
 								"category",
 								"delete",
-								"60168"
+								"120169"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Priority",
+			"item": [
+				{
+					"name": "GetPrioritiesByUserEmail",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"\",\r\n    \"email\": \"email1@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/priority/search",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"priority",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetPriorityById",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "30077",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/priority/id",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"priority",
+								"id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddPriority",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"New priority\",\r\n    \"color\": \"#fff\",\r\n    \"user\": \r\n    {\r\n        \"id\": 10025\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/priority/add",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"priority",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdatePriority",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 60098,\r\n    \"title\": \"qwe\",\r\n    \"color\": \"#qqqq\",\r\n    \"user\": \r\n    {\r\n        \"id\": 10025\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/priority/update",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"priority",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeletePriority",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/priority/delete/60000",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"priority",
+								"delete",
+								"60000"
 							]
 						}
 					},

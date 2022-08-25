@@ -82,7 +82,7 @@ public class PriorityController {
     }
 
     @PostMapping("/id")
-    public ResponseEntity<Priority> findById(@RequestBody Long id) {
+    public ResponseEntity<Priority> getById(@RequestBody Long id) {
 
         try {
             Checker.idIsNullOrZero(id);

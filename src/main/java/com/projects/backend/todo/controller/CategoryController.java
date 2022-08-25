@@ -82,7 +82,7 @@ public class CategoryController {
     }
 
     @PostMapping("/id")
-    public ResponseEntity<Category> findById(@RequestBody Long id) {
+    public ResponseEntity<Category> getById(@RequestBody Long id) {
 
         try {
             Checker.idIsNullOrZero(id);

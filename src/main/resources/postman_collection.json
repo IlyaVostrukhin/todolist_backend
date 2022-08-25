@@ -271,6 +271,165 @@
 			]
 		},
 		{
+			"name": "Task",
+			"item": [
+				{
+					"name": "GetTasksByUserEmail",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "email1@gmail.com",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/task/all",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"task",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetTaskById",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "50160",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/task/id",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"task",
+								"id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddTask",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"newTask\",\r\n    \"isCompleted\": false,\r\n    \"taskDate\": \"2021-08-01T17:00:00.000+00:00\",\r\n    \"priority\": {\r\n        \"id\": 30075\r\n    },\r\n    \"category\": {\r\n        \"id\": 60129\r\n    },\r\n    \"user\": {\r\n        \"id\": 10025\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/task/add",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"task",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateTask",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 100193,\r\n    \"title\": \"newTask\",\r\n    \"isCompleted\": true,\r\n    \"taskDate\": \"2021-08-01T17:00:00.000+00:00\",\r\n    \"priority\": {\r\n        \"id\": 30075\r\n    },\r\n    \"category\": {\r\n        \"id\": 60129\r\n    },\r\n    \"user\": {\r\n        \"id\": 10025\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/task/update",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"task",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteTask",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/task/delete/100192",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"task",
+								"delete",
+								"100192"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SearchTasks",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"task\",\r\n    \"priorityId\": 30075,\r\n    \"categoryId\": 60129,\r\n    \"isCompleted\": 1,\r\n    \"email\": \"email1@gmail.com\",\r\n    \"dateFrom\": \"2021-08-02\",\r\n    \"dateTo\": \"2021-08-02\",\r\n    \"pageNumber\": 0,\r\n    \"pageSize\": 3,\r\n    \"sortColumn\": \"title\",\r\n    \"sortDirection\": \"desc\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/task/search",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"task",
+								"search"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "GetStatistic",
 			"request": {
 				"method": "POST",

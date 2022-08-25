@@ -1,5 +1,6 @@
 package com.projects.backend.todo.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,9 +30,9 @@ public class Activity {
 
     @Column(name = "activated")
     @Type(type = "org.hibernate.type.NumericBooleanType")
-//    @Convert(converter = org.hibernate.type.NumericBooleanType.class)
     private boolean isActivated;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId
     @JoinColumn(name = "user_id", referencedColumnName = "id")
@@ -51,5 +52,3 @@ public class Activity {
     }
 
 }
-
-
